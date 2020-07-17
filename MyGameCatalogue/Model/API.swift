@@ -6,11 +6,15 @@
 //  Copyright © 2020 Fikri Helmi. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class API {
     
     func loadGameList(completionHandler: @escaping ([Game]) -> Void) {
+        
+        
+        
+        
         let request = URLRequest(url: URL(string: "https://api.rawg.io/api/games")!)
         
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
@@ -29,6 +33,7 @@ class API {
             
         })
         task.resume()
+        
     }
     
     func loadGameDetail(IDGame: Int, completionHandler: @escaping (GameDetail?) -> Void) {

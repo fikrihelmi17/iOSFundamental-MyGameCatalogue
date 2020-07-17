@@ -11,16 +11,17 @@ import SDWebImage
 
 class GameTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var gambar: UIImageView!
-    @IBOutlet weak var judul: UILabel!
-    @IBOutlet weak var tanggalRilis: UILabel!
-    @IBOutlet weak var peringkat: UILabel!
+    @IBOutlet weak var imageCell: UIImageView!
+    @IBOutlet weak var titleCell: UILabel!
+    @IBOutlet weak var releasedCell: UILabel!
+    @IBOutlet weak var chartCell: UILabel!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        gambar.layer.cornerRadius = gambar.frame.height / 2
-        gambar.clipsToBounds = true
+        imageCell.layer.cornerRadius = imageCell.frame.height / 2
+        imageCell.clipsToBounds = true
     }
 
 }

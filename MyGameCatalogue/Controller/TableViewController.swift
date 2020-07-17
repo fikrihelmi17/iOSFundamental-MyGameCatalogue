@@ -20,9 +20,29 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+
+      
+        let when = DispatchTime.now() + 4
+        DispatchQueue.main.asyncAfter(deadline: when){
+            alert.dismiss(animated: true, completion: nil)
+        }
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        
+        
         self.api.loadGameList(completionHandler: reloadTable(games:))
+        
+       //dismiss(animated: false, completion: nil)
     }
     
     func reloadTable(games: [Game]) {
@@ -30,7 +50,11 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+        
+        
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailViewController = segue.destination as! DetailViewController
@@ -49,11 +73,11 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let game = array![indexPath.row]
         
-        cell.gambar.sd_setImage(with: URL(string: game.background_image), placeholderImage: UIImage(named: "placeholder.png"))
+        cell.imageCell.sd_setImage(with: URL(string: game.background_image), placeholderImage: UIImage(named: "placeholder.png"))
    
-        cell.judul.text = game.name
-        cell.tanggalRilis.text = game.released
-        cell.peringkat.text = String(game.metacritic)
+        cell.titleCell.text = game.name
+        cell.releasedCell.text = game.released
+        cell.chartCell.text = String(game.metacritic)
 
         return cell
     }
@@ -70,4 +94,5 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         selectedGame = array[indexPath.row]
         return indexPath
     }
+    
 }
