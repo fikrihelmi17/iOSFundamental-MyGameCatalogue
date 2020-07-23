@@ -11,10 +11,6 @@ import UIKit
 class API {
     
     func loadGameList(completionHandler: @escaping ([Game]) -> Void) {
-        
-        
-        
-        
         let request = URLRequest(url: URL(string: "https://api.rawg.io/api/games")!)
         
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
