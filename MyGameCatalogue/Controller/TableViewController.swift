@@ -15,7 +15,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     let api = API()
     var array: [Game]?
     var selectedGame: Game?
- 
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +50,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-        
-        
     }
     
     
@@ -59,7 +57,9 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailViewController = segue.destination as! DetailViewController
         detailViewController.game = selectedGame
+
     }
+    
 
     
     //datasource
@@ -73,7 +73,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let game = array![indexPath.row]
         
-        cell.imageCell.sd_setImage(with: URL(string: game.background_image), placeholderImage: UIImage(named: "placeholder.png"))
+        cell.imageCell.sd_setImage(with: URL(string: game.background_image ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
    
         cell.titleCell.text = game.name
         cell.releasedCell.text = game.released
