@@ -22,13 +22,20 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var chart: UILabel!
     @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var playtime: UILabel!
+    @IBOutlet weak var favorite: UIButton!
     
     @IBOutlet weak var image: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let game = self.game!
-    
+        
+        if coreData.isFavorite(game) == true {
+            favorite.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            favorite.setImage(UIImage(systemName: "star"), for: .normal)
+        }
+        
         api.loadGameDetail(IDGame: game.id, completionHandler: { gameDetail in
             guard let gameDetail = gameDetail else {return}
             
@@ -52,12 +59,22 @@ class DetailViewController: UIViewController {
         })
     
     }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
+    }
 
     @IBAction func btnFav(_ sender: Any) {
         if coreData.isFavorite(game!) == true {
             coreData.deleteFromFavorite(game!)
+            favorite.setImage(UIImage(systemName: "star"), for: .normal)
+            showAlert(message: "This game is deleted from favorite list!")
         } else {
             coreData.saveToFavorite(game!)
+            favorite.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            showAlert(message: "This game is saved to favorite list!")
         }
     }
     

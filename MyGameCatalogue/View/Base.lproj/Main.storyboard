@@ -261,6 +261,7 @@
                     <connections>
                         <outlet property="chart" destination="4fj-vw-rDr" id="TQe-zX-rf8"/>
                         <outlet property="descView" destination="UQ4-YD-Aph" id="Kvv-Sy-WXO"/>
+                        <outlet property="favorite" destination="pSK-ag-wPm" id="uyN-yk-cbb"/>
                         <outlet property="image" destination="KfI-iE-SLH" id="q8L-MP-csM"/>
                         <outlet property="playtime" destination="vYO-4H-SyX" id="66P-TK-YNF"/>
                         <outlet property="rating" destination="gVK-NF-iR3" id="Iny-3T-N6g"/>
@@ -506,15 +507,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favCell" id="4yW-ND-OT2" customClass="FavoritesTableViewCell" customModule="MyGameCatalogue" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favCell" rowHeight="120" id="4yW-ND-OT2" customClass="FavoritesTableViewCell" customModule="MyGameCatalogue" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4yW-ND-OT2" id="Dyb-Me-iLw">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JB6-gJ-cxf">
-                                                    <rect key="frame" x="20" y="11" width="374" height="21.5"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="97.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="2YD-Yn-Q3Z"/>
                                                         <constraint firstAttribute="width" constant="374" id="AQ6-0F-cTI"/>
@@ -570,7 +571,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uv5-Jm-rP7"/>
+        <segue reference="oGp-yI-r6F"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="gamecontroller" catalog="system" width="128" height="82"/>
