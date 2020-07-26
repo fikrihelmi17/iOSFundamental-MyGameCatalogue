@@ -38,15 +38,18 @@ class GameDetail: Codable {
     let playtime: Int
 }
 
-struct K {
-    struct Core {
-        static let entityGame = "GameData"
+struct value {
+        static let entityName = "GameData"
         static let id = "id"
+        static let name = "name"
+        static let released = "released"
         static let metacritic = "metacritic"
         static let playtime = "playtime"
         static let rating = "rating"
         static let background_image = "background_image"
-        static let name = "name"
-        static let released = "released"
-    }
+        static let description = "description"
 }
+
+let NOTIF_RESET_SORT_SELECTED = Notification.Name("resetSortSelected")
+let NOTIF_CONFIRM_SORT_PRESSED = Notification.Name("confirmSortPressed")
+let NOTIF_PROFILE_UPDATED = Notification.Name("profileUpdated")

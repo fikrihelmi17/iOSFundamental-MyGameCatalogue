@@ -11,47 +11,52 @@ import UIKit
 class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     let api = API()
     var array: [Game]?
     var selectedGame: Game?
     
-
+    var defService = ProfileModel.instance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-        loadingIndicator.startAnimating();
-
-        alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
-
-      
-        let when = DispatchTime.now() + 4
-        DispatchQueue.main.asyncAfter(deadline: when){
-            alert.dismiss(animated: true, completion: nil)
-        }
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        setProfile()
         
+        loading.startAnimating()
+        loading.isHidden = false
+        tableView.isHidden = true
         
         self.api.loadGameList(completionHandler: reloadTable(games:))
         
-       //dismiss(animated: false, completion: nil)
+       
     }
     
     func reloadTable(games: [Game]) {
         array = games
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            
+            self.loading.stopAnimating()
+            self.loading.isHidden = true
+            self.tableView.isHidden = false
         }
     }
     
+    func setProfile() {
+        if defService.hasLaunched == false {
+            defService.profileName = "Fikri Helmi Setiawan"
+            defService.profileEmail = "fikrihelmi17@gmail.com"
+            defService.profileGithub = "github.com/fikrihelmi17"
+            defService.profileAboutMe = "Perkenalkan, nama saya adalah Fikri Helmi Setiawan. Saya lahir pada tanggal 27 Juli 1999. Saya bertempat tinggal di Soreang, Kab Bandung. Saat ini saya sedang menempuh pendidikan S1 di Universtas Widyatama. Informatika. Dengan mengikuti beasiswa IDCamp dan Dicoding ini, saya ingin menjadi iOS Developer."
+            defService.profileImage = nil
+            defService.hasLaunched = true
+        }
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,7 +79,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         let game = array![indexPath.row]
         
         cell.imageCell.sd_setImage(with: URL(string: game.background_image ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
-   
         cell.titleCell.text = game.name
         cell.releasedCell.text = game.released
         cell.chartCell.text = String(game.metacritic)

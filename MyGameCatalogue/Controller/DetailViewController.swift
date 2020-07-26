@@ -23,12 +23,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var playtime: UILabel!
     @IBOutlet weak var favorite: UIButton!
-    
     @IBOutlet weak var image: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let game = self.game!
+        
         
         if coreData.isFavorite(game) == true {
             favorite.setImage(UIImage(systemName: "star.fill"), for: .normal)
@@ -58,6 +58,23 @@ class DetailViewController: UIViewController {
             }
         })
     
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+          let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+          loadingIndicator.hidesWhenStopped = true
+          loadingIndicator.style = UIActivityIndicatorView.Style.medium
+          loadingIndicator.startAnimating();
+
+          alert.view.addSubview(loadingIndicator)
+          present(alert, animated: true, completion: nil)
+
+        
+          let when = DispatchTime.now() + 2
+          DispatchQueue.main.asyncAfter(deadline: when){
+              alert.dismiss(animated: true, completion: nil)
+          }
     }
     
     func showAlert(message: String) {
