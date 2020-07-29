@@ -103,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PXg-pT-xGe" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1134.7826086956522" y="109.82142857142857"/>
+            <point key="canvasLocation" x="1043" y="110"/>
         </scene>
         <!--Detail Game-->
         <scene sceneID="Lqe-iU-T1R">
@@ -597,13 +597,33 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7c-zL-dJp">
+                                <rect key="frame" x="29" y="326" width="357" height="245"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="357" id="7uu-pf-NjS"/>
+                                    <constraint firstAttribute="height" constant="245" id="xRb-Sp-Xyy"/>
+                                </constraints>
+                                <string key="text">Favorite list is empty.
+To add your game to favorite, in game detail click 'star' icon.
+Your favorite game will appear here</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="b7c-zL-dJp" firstAttribute="leading" secondItem="oLT-Hb-6G1" secondAttribute="leading" constant="29" id="S41-Ye-izf"/>
+                            <constraint firstItem="oLT-Hb-6G1" firstAttribute="bottom" secondItem="b7c-zL-dJp" secondAttribute="bottom" constant="242" id="Zq4-Gn-Phc"/>
+                            <constraint firstItem="b7c-zL-dJp" firstAttribute="top" secondItem="oLT-Hb-6G1" secondAttribute="top" constant="238" id="fHo-Iy-Cty"/>
+                            <constraint firstItem="oLT-Hb-6G1" firstAttribute="trailing" secondItem="b7c-zL-dJp" secondAttribute="trailing" constant="28" id="v5a-D6-7SD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="oLT-Hb-6G1"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Favorites" id="1LZ-EZ-NKe"/>
                     <connections>
-                        <outlet property="tableFav" destination="PTf-0D-8Mi" id="5Qy-eB-Hkl"/>
+                        <outlet property="placeholder" destination="b7c-zL-dJp" id="bBu-h7-hge"/>
+                        <outlet property="tableView" destination="PTf-0D-8Mi" id="5Qy-eB-Hkl"/>
                         <segue destination="Gfh-6U-NDH" kind="show" identifier="showDetail" id="oGp-yI-r6F"/>
                     </connections>
                 </viewController>

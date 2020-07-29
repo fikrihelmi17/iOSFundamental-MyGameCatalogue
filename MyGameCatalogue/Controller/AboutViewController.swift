@@ -16,8 +16,6 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var github: UILabel!
     @IBOutlet weak var aboutMe: UITextView!
     
-    var def = ProfileModel.instance
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,11 +25,11 @@ class AboutViewController: UIViewController {
     }
     
     func setupUI() {
-        name.text = def.profileName
-        github.text = def.profileGithub
-        email.text = def.profileEmail
-        aboutMe.text = def.profileAboutMe
-        if let profileImage = def.profileImage {
+        name.text = ProfileModel.instance.profileName
+        github.text = ProfileModel.instance.profileGithub
+        email.text = ProfileModel.instance.profileEmail
+        aboutMe.text = ProfileModel.instance.profileAboutMe
+        if let profileImage = ProfileModel.instance.profileImage {
             image.image = UIImage(data: profileImage)
         }
     }

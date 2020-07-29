@@ -18,7 +18,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var aboutProfile: UITextField!
     @IBOutlet weak var updateProfile: UIButton!
     
-    var def = ProfileModel.instance
     private let imagePicker = UIImagePickerController()
   
     
@@ -38,11 +37,11 @@ class ProfileViewController: UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
 
-        nameProfile.text = def.profileName
-        emailProfile.text = def.profileEmail
-        githubProfile.text = def.profileGithub
-        aboutProfile.text = def.profileAboutMe
-        if let profileImage = def.profileImage {
+        nameProfile.text = ProfileModel.instance.profileName
+        emailProfile.text = ProfileModel.instance.profileEmail
+        githubProfile.text = ProfileModel.instance.profileGithub
+        aboutProfile.text = ProfileModel.instance.profileAboutMe
+        if let profileImage = ProfileModel.instance.profileImage {
             imageProfile.image = UIImage(data: profileImage)
         }
     }
@@ -87,11 +86,11 @@ class ProfileViewController: UIViewController {
 
         if let name = nameProfile.text, let email = emailProfile.text, let github = githubProfile.text, let image = imageProfile.image, let about = aboutProfile.text, let data = image.pngData() as Data? {
 
-            def.profileName = name
-            def.profileEmail = email
-            def.profileGithub = github
-            def.profileAboutMe = about
-            def.profileImage = data as Data
+            ProfileModel.instance.profileName = name
+            ProfileModel.instance.profileEmail = email
+            ProfileModel.instance.profileGithub = github
+            ProfileModel.instance.profileAboutMe = about
+            ProfileModel.instance.profileImage = data as Data
         }
 
         NotificationCenter.default.post(name: NOTIF_PROFILE_UPDATED, object: nil)

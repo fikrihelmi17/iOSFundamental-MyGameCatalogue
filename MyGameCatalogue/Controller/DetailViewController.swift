@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class DetailViewController: UIViewController {
 
@@ -58,6 +59,15 @@ class DetailViewController: UIViewController {
             }
         })
     
+        UNUserNotificationCenter.current().delegate = self
+          
+          UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+          if granted {
+              print("Mendapatkan izin dari pengguna untuk local notifications")
+          } else {
+              print("Tidak mendapatkan izin dari pengguna untuk local notifications")
+          }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,17 +92,73 @@ class DetailViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func notificationDelete() {
+        let content = UNMutableNotificationContent()
+        content.title = "My Favorite !"
+        content.body = "List game pada my favorite telah berkurang karena anda telah menghapus game dari list favorite."
+        content.sound = .default
+        content.userInfo = ["value" : "Data dengan local notification"]
+        
+        let fireDate = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: Date().addingTimeInterval(10))
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: fireDate, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "message", content: content, trigger: trigger)
+        
+        let center = UNUserNotificationCenter.current()
+        center.add(request) { (error) in
+            if error != nil {
+                print("Error = \(error?.localizedDescription ?? "Terjadi kesalahan dalam local notification")")
+            }
+        }
+    }
+    
+    func notificationSave() {
+        let content = UNMutableNotificationContent()
+        content.title = "My Favorite !"
+        content.body = "List game pada my favorite telah bertambah karena anda telah menambahkan game ke list favorite."
+        content.sound = .default
+        content.userInfo = ["value" : "Data dengan local notification"]
+        
+        let fireDate = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: Date().addingTimeInterval(10))
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: fireDate, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "message", content: content, trigger: trigger)
+        
+        let center = UNUserNotificationCenter.current()
+        center.add(request) { (error) in
+            if error != nil {
+                print("Error = \(error?.localizedDescription ?? "Terjadi kesalahan dalam local notification")")
+            }
+        }
+    }
 
     @IBAction func btnFav(_ sender: Any) {
         if coreData.isFavorite(game!) == true {
             coreData.deleteFromFavorite(game!)
             favorite.setImage(UIImage(systemName: "star"), for: .normal)
             showAlert(message: "This game is deleted from favorite list!")
+            notificationDelete()
         } else {
             coreData.saveToFavorite(game!)
             favorite.setImage(UIImage(systemName: "star.fill"), for: .normal)
             showAlert(message: "This game is saved to favorite list!")
+            notificationSave()
         }
     }
     
+}
+
+extension DetailViewController: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("UserInfo yang terkait dengan notifikasi == \(response.notification.request.content.userInfo)")
+        
+        completionHandler()
+    }
 }

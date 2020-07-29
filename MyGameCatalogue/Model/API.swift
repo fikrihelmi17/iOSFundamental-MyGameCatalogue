@@ -10,6 +10,8 @@ import UIKit
 
 class API {
     
+    static var searchData: [Game] = [Game]()
+    
     func loadGameList(completionHandler: @escaping ([Game]) -> Void) {
         let request = URLRequest(url: URL(string: "https://api.rawg.io/api/games")!)
         

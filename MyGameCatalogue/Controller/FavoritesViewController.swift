@@ -10,56 +10,50 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
 
-    @IBOutlet weak var tableFav: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var placeholder: UILabel!
     
     var games: [Game]?
-
-    
-    var defService = ProfileModel.instance
-    var cdService = GameCoreData.self
     
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            tableFav.delegate = self
-            tableFav.dataSource = self
-            
-            games = cdService.loadFavoritList()
+            tableView.delegate = self
+            tableView.dataSource = self
+            games = GameCoreData.self.loadFavoritList()
             emptyCheck()
             
-            tableFav.reloadData()
+            tableView.reloadData()
             
         }
         
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-            games = cdService.loadFavoritList()
-            tableFav.reloadData()
+            games = GameCoreData.self.loadFavoritList()
+            tableView.reloadData()
             emptyCheck()
-        }
-        
-        func showAlert(message: String) {
-            let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true, completion: nil)
         }
         
         func emptyCheck() {
             if games?.count == 0 {
-                showAlert(message: "Favorite List is empty. Click 'Star' icon in the game info")
-        }
+                tableView.isHidden = true
+                placeholder.isHidden = false
+            } else {
+                tableView.isHidden = false
+                placeholder.isHidden = true
+            }
 
     }
 }
 
-    extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
+extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return games?.count ?? 0
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableFav.dequeueReusableCell(withIdentifier: "favCell", for: indexPath) as! FavoritesTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "favCell", for: indexPath) as! FavoritesTableViewCell
                  
             let game = games![indexPath.row]
                  cell.titleLabel.text = game.name
@@ -76,7 +70,7 @@ class FavoritesViewController: UIViewController {
             if segue.identifier == "showDetail" {
                 let detailViewController = segue.destination as! DetailViewController
                 
-                if let indexPath = tableFav.indexPathForSelectedRow {
+                if let indexPath = tableView.indexPathForSelectedRow {
                     detailViewController.game = games?[indexPath.row]
                 }
             }

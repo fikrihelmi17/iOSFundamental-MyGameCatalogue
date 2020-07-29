@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040151B224BD4CC300C5911D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040151B124BD4CC300C5911D /* TableViewController.swift */; };
+		040216F924CDE7EB004D36A0 /* MyGameCatalogueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040216F824CDE7EB004D36A0 /* MyGameCatalogueUITests.swift */; };
 		042C25A824BB2B5000732AAA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C25A724BB2B5000732AAA /* API.swift */; };
 		0433414124CDAEB6000265C8 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433414024CDAEB6000265C8 /* AboutViewController.swift */; };
 		044C026C24CD97F700CBDE73 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C026B24CD97F700CBDE73 /* ProfileViewController.swift */; };
@@ -27,8 +28,21 @@
 		47816D2E775C03380725B03B /* Pods_MyGameCatalogue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C59510FECBA54568B341AEF /* Pods_MyGameCatalogue.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		040216FB24CDE7EB004D36A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04B77B4124B87115009244D0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04B77B4824B87115009244D0;
+			remoteInfo = MyGameCatalogue;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		040151B124BD4CC300C5911D /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		040216F624CDE7EB004D36A0 /* MyGameCatalogueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGameCatalogueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		040216F824CDE7EB004D36A0 /* MyGameCatalogueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGameCatalogueUITests.swift; sourceTree = "<group>"; };
+		040216FA24CDE7EB004D36A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		042C25A724BB2B5000732AAA /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		0433414024CDAEB6000265C8 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		044C026B24CD97F700CBDE73 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +67,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		040216F324CDE7EB004D36A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04B77B4624B87115009244D0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,10 +85,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040216F724CDE7EB004D36A0 /* MyGameCatalogueUITests */ = {
+			isa = PBXGroup;
+			children = (
+				040216F824CDE7EB004D36A0 /* MyGameCatalogueUITests.swift */,
+				040216FA24CDE7EB004D36A0 /* Info.plist */,
+			);
+			path = MyGameCatalogueUITests;
+			sourceTree = "<group>";
+		};
 		04B77B4024B87115009244D0 = {
 			isa = PBXGroup;
 			children = (
 				04B77B4B24B87115009244D0 /* MyGameCatalogue */,
+				040216F724CDE7EB004D36A0 /* MyGameCatalogueUITests */,
 				04B77B4A24B87115009244D0 /* Products */,
 				CA840639E2D92AE53B8BEAB1 /* Pods */,
 				1CA95AEE2B8CDC417D55A58F /* Frameworks */,
@@ -78,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				04B77B4924B87115009244D0 /* MyGameCatalogue.app */,
+				040216F624CDE7EB004D36A0 /* MyGameCatalogueUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,6 +191,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		040216F524CDE7EB004D36A0 /* MyGameCatalogueUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 040216FF24CDE7EB004D36A0 /* Build configuration list for PBXNativeTarget "MyGameCatalogueUITests" */;
+			buildPhases = (
+				040216F224CDE7EB004D36A0 /* Sources */,
+				040216F324CDE7EB004D36A0 /* Frameworks */,
+				040216F424CDE7EB004D36A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				040216FC24CDE7EB004D36A0 /* PBXTargetDependency */,
+			);
+			name = MyGameCatalogueUITests;
+			productName = MyGameCatalogueUITests;
+			productReference = 040216F624CDE7EB004D36A0 /* MyGameCatalogueUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		04B77B4824B87115009244D0 /* MyGameCatalogue */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04B77B5D24B87116009244D0 /* Build configuration list for PBXNativeTarget "MyGameCatalogue" */;
@@ -184,10 +234,14 @@
 		04B77B4124B87115009244D0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Fikri Helmi";
 				TargetAttributes = {
+					040216F524CDE7EB004D36A0 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 04B77B4824B87115009244D0;
+					};
 					04B77B4824B87115009244D0 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -207,11 +261,19 @@
 			projectRoot = "";
 			targets = (
 				04B77B4824B87115009244D0 /* MyGameCatalogue */,
+				040216F524CDE7EB004D36A0 /* MyGameCatalogueUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		040216F424CDE7EB004D36A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04B77B4724B87115009244D0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -267,6 +329,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		040216F224CDE7EB004D36A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				040216F924CDE7EB004D36A0 /* MyGameCatalogueUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04B77B4524B87115009244D0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,6 +360,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		040216FC24CDE7EB004D36A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04B77B4824B87115009244D0 /* MyGameCatalogue */;
+			targetProxy = 040216FB24CDE7EB004D36A0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		04B77B5224B87115009244D0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -310,6 +388,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		040216FD24CDE7EB004D36A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8G73BH94RR;
+				INFOPLIST_FILE = MyGameCatalogueUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fikrihelmi.MyGameCatalogueUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyGameCatalogue;
+			};
+			name = Debug;
+		};
+		040216FE24CDE7EB004D36A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8G73BH94RR;
+				INFOPLIST_FILE = MyGameCatalogueUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fikrihelmi.MyGameCatalogueUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyGameCatalogue;
+			};
+			name = Release;
+		};
 		04B77B5B24B87116009244D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -465,6 +583,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		040216FF24CDE7EB004D36A0 /* Build configuration list for PBXNativeTarget "MyGameCatalogueUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				040216FD24CDE7EB004D36A0 /* Debug */,
+				040216FE24CDE7EB004D36A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		04B77B4424B87115009244D0 /* Build configuration list for PBXProject "MyGameCatalogue" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

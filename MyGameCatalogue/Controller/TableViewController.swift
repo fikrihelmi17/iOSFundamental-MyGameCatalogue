@@ -17,14 +17,12 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     var array: [Game]?
     var selectedGame: Game?
     
-    var defService = ProfileModel.instance
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
+      
         setProfile()
         
         loading.startAnimating()
@@ -32,8 +30,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.isHidden = true
         
         self.api.loadGameList(completionHandler: reloadTable(games:))
-        
-       
     }
     
     func reloadTable(games: [Game]) {
@@ -48,13 +44,13 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func setProfile() {
-        if defService.hasLaunched == false {
-            defService.profileName = "Fikri Helmi Setiawan"
-            defService.profileEmail = "fikrihelmi17@gmail.com"
-            defService.profileGithub = "github.com/fikrihelmi17"
-            defService.profileAboutMe = "Perkenalkan, nama saya adalah Fikri Helmi Setiawan. Saya lahir pada tanggal 27 Juli 1999. Saya bertempat tinggal di Soreang, Kab Bandung. Saat ini saya sedang menempuh pendidikan S1 di Universtas Widyatama. Informatika. Dengan mengikuti beasiswa IDCamp dan Dicoding ini, saya ingin menjadi iOS Developer."
-            defService.profileImage = nil
-            defService.hasLaunched = true
+        if ProfileModel.instance.hasLaunched == false {
+            ProfileModel.instance.profileName = "Fikri Helmi Setiawan"
+            ProfileModel.instance.profileEmail = "fikrihelmi17@gmail.com"
+            ProfileModel.instance.profileGithub = "github.com/fikrihelmi17"
+            ProfileModel.instance.profileAboutMe = "Perkenalkan, nama saya adalah Fikri Helmi Setiawan. Saya lahir pada tanggal 27 Juli 1999. Saya bertempat tinggal di Soreang, Kab Bandung. Saat ini saya sedang menempuh pendidikan S1 di Universtas Widyatama. Informatika. Dengan mengikuti beasiswa IDCamp dan Dicoding ini, saya ingin menjadi iOS Developer."
+            ProfileModel.instance.profileImage = nil
+            ProfileModel.instance.hasLaunched = true
         }
     }
     
@@ -97,6 +93,11 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         selectedGame = array[indexPath.row]
         return indexPath
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

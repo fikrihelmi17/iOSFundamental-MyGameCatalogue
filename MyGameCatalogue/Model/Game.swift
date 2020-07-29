@@ -26,6 +26,8 @@ class Game: Codable {
         self.background_image = released
         self.metacritic = metacritic
     }
+    
+    
 }
 
 class GameDetail: Codable {
@@ -48,6 +50,7 @@ struct value {
         static let rating = "rating"
         static let background_image = "background_image"
         static let description = "description"
+        static let game = "game"
 }
 
 let NOTIF_RESET_SORT_SELECTED = Notification.Name("resetSortSelected")
