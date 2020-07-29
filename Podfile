@@ -10,4 +10,4 @@ target 'MyGameCatalogue' do
 end
 
 pod 'SDWebImage', '~> 4.0'
-
+pod 'Kingfisher', '~> 4.0'

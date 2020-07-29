@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SDWebImage
+
+var gameDetail : GameDetail?
 
 class FavoritesViewController: UIViewController {
 
@@ -56,6 +59,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "favCell", for: indexPath) as! FavoritesTableViewCell
                  
             let game = games![indexPath.row]
+                 cell.imageLabel.sd_setImage(with: URL(string: game.background_image ?? ""))
                  cell.titleLabel.text = game.name
                  cell.releasedLabel.text = game.released
                  cell.chartLabel.text = String(game.metacritic)

@@ -22,6 +22,9 @@ class AboutViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: NOTIF_PROFILE_UPDATED, object: nil)
         
         setupUI()
+        
+        image.layer.cornerRadius = image.frame.height / 2
+        image.clipsToBounds = true
     }
     
     func setupUI() {

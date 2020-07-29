@@ -23,7 +23,7 @@ class Game: Codable {
         self.id = id
         self.name = name
         self.released = released
-        self.background_image = released
+        self.background_image = background_image
         self.metacritic = metacritic
     }
     
