@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 
+@IBDesignable
 class FavoritesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -16,10 +17,17 @@ class FavoritesTableViewCell: UITableViewCell {
     @IBOutlet weak var chartLabel: UILabel!
     @IBOutlet weak var imageLabel: UIImageView!
     
+    override func prepareForInterfaceBuilder() {
+        custom()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        imageLabel.layer.cornerRadius = imageLabel.frame.height / 2
+        custom()
+    }
+    
+    func custom() {
+        imageLabel.layer.cornerRadius = 10.0
         imageLabel.clipsToBounds = true
     }
 
